@@ -1,0 +1,18 @@
+main{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.products{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 100px 50px;
+}
+.order-summery{
+    background-color: rgba(255, 153, 0, 0.3);
+    padding: 23px;
+}
+.order-summery h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
