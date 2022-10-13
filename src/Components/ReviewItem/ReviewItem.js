@@ -3,7 +3,7 @@ import React from 'react';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './ReviewItem.css'
 
-const ReviewItem = ({ product }) => {
+const ReviewItem = ({ product, handleCart }) => {
     console.log(product);
     const { id, img, name, price, quantity, shipping } = product
     return (
@@ -16,10 +16,10 @@ const ReviewItem = ({ product }) => {
                     <h3>{name}</h3>
                     <p>Price: <span className='oranged'>${price}</span></p>
                     <p>Shipping: <span className='oranged'>${shipping}</span></p>
-                    <p>Quantity: <span className='oranged'>${quantity}</span></p>
+                    <p>Quantity: <span className='oranged'>{quantity}</span></p>
                 </div>
                 <div className='dlt-btn-container'>
-                    <button>
+                    <button onClick={() => handleCart(id)}>
                         <FontAwesomeIcon className='dlt-btn' icon={faTrashAlt}></FontAwesomeIcon>
                     </button>
                 </div>
