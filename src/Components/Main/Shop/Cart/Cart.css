@@ -1,4 +1,19 @@
-.cart{
+.cart {
     position: sticky;
     top: 20px;
+}
+
+.btn-clear-cart {
+    margin-left:10px;
+    background-color: #FF3030;
+    border-radius: 4px;
+    border: none;
+    padding: 13px 40px;
+    color: white;
+    display: flex;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.btn-clear-cart:hover {
+    background-color: #a01a1a;
 }

@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { addToDb, getShoppingCart } from '../../../utilities/fakedb';
+import { Link, useLoaderData } from 'react-router-dom';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../../utilities/fakedb';
 import Cart from './Cart/Cart';
 import Product from './Product/Product';
 import './Shop.css';
@@ -8,6 +10,11 @@ import './Shop.css';
 const Shop = () => {
     const products = useLoaderData();
     const [cart, setCart] = useState([])
+
+    const clearCartBtn = () => {
+        setCart([]);
+        deleteShoppingCart();
+    }
 
     useEffect(() => {
         const storedCart = getShoppingCart();
@@ -30,12 +37,12 @@ const Shop = () => {
         const exists = cart.find(product => product.id === selectedProduct.id);
         if (!exists) {
             selectedProduct.quantity = 1;
-            newCart= [...cart, selectedProduct]
+            newCart = [...cart, selectedProduct]
         }
-        else{
+        else {
             const rest = cart.filter(product => product.id !== selectedProduct.id);
             exists.quantity += 1;
-            newCart =[...rest, exists]
+            newCart = [...rest, exists]
         }
         // newCart = [...cart, selectedProduct];
         setCart(newCart)
@@ -57,7 +64,14 @@ const Shop = () => {
             <section className='order-summery'>
                 <Cart
                     cart={cart}
-                ></Cart>
+                    clearCartBtn={clearCartBtn}
+                >
+                    <Link to='/orders'>
+                        <button className='review-btn'>Review Orders &nbsp;
+                            <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                        </button>
+                    </Link>
+                </Cart>
             </section>
         </main>
     );

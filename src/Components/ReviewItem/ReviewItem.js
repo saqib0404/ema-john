@@ -4,7 +4,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './ReviewItem.css'
 
 const ReviewItem = ({ product, handleCart }) => {
-    console.log(product);
+    // console.log(product);
     const { id, img, name, price, quantity, shipping } = product
     return (
         <div className='review-item-container'>
